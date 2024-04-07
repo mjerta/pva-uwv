@@ -1,0 +1,111 @@
+:root {
+  --main-bg-color: #ffefee;
+  --color-darkgreen: #3b8f57;
+  --color-darkpink: #e16b6b;
+  --color-brown: #865959;
+  --color-lightgreen: #6ce86a;
+  --color-darkergreen: #112919;
+}
+
+@media (min-width: 300px) {
+  html {
+    font-size: clamp(8px, 2.66vw, 11px);
+  }
+}
+
+@media (min-width: 500px) {
+  html {
+    font-size: 11px;
+  }
+}
+
+@media (min-width: 1000px) {
+  html {
+    font-size: clamp(11px, 1.1vw, 16px);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  height: 100svh;
+  font-family: "Montserrat", sans-serif;
+  margin: 0 auto;
+  max-width: 1440px;
+}
+
+header {
+  height: 12.4%;
+  display: flex;
+  align-items: end;
+  border-bottom: 2px solid;
+}
+
+.logo {
+  margin-bottom: 0.63rem;
+  margin-left: 8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: calc(25rem / 16);
+}
+
+#logo-left {
+  position: relative;
+  color: var(--color-darkgreen);
+}
+#logo-left::after {
+  position: absolute;
+  content: "";
+  height: 85%;
+  width: calc(3rem / 16);
+  background-color: var(--color-darkpink);
+  transform: rotate(-23deg);
+  border-radius: calc(8rem / 16);
+  right: -0.2rem;
+  top: 0;
+}
+#logo-right {
+  color: var(--color-brown);
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  /* background-color: red; */
+}
+.circle {
+  border-radius: 50%;
+}
+
+.select-button {
+  height: calc((50rem / 16));
+  width: calc((50rem / 16));
+  background-image: radial-gradient(
+    circle at 60% 50%,
+    var(--color-lightgreen),
+    var(--color-darkergreen)
+  );
+  border: 2px solid var(--color-brown);
+}
+
+.inside-circle-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 64%;
+  margin: 0 auto;
+}
+
+.above {
+  margin-top: 5rem;
+}
+
+summary {
+  font-size: 1rem;
+}
