@@ -1,11 +1,13 @@
 :root {
-  --main-bg-color: #ffefee;
+  --main-bg-color: #ebd4d3;
   --color-darkgreen: #3b8f57;
   --color-darkpink: #e16b6b;
   --color-brown: #865959;
   --color-lightgreen: #6ce86a;
   --color-darkergreen: #112919;
   --color-darkergreen-with-opacity: hsl(140, 41%, 11%, 50%);
+  --color-big-circles: #9a0f0f;
+  --color-darker-red: #c93333;
 }
 
 @media (min-width: 300px) {
@@ -63,19 +65,45 @@
   margin: 0;
 }
 
+a,
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+textarea,
+select {
+  outline: none;
+}
+
 body {
+  position: relative;
   background-color: var(--main-bg-color);
-  height: 100svh;
+  min-height: 1024px;
   font-family: "Montserrat", sans-serif;
   margin: 0 auto;
   max-width: 1440px;
+  overflow-x: hidden;
+}
+
+.overlay {
+  svg {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    z-index: -1;
+    bottom: -30rem;
+    left: -11rem;
+    path {
+      fill: var(--color-big-circles);
+    }
+  }
 }
 
 header {
-  height: 12.4%;
+  height: calc(120rem / 16);
   display: flex;
   align-items: end;
-  border-bottom: 2px solid;
+  /* border-bottom: 2px solid; */
   max-width: calc(1194rem / 16);
   margin: 0 auto;
 }
@@ -126,12 +154,22 @@ button {
 .select-button {
   height: calc((50rem / 16));
   width: calc((50rem / 16));
+  border: 2px solid var(--color-brown);
+}
+
+.active {
   background-image: radial-gradient(
     circle at 60% 50%,
     var(--color-lightgreen),
     var(--color-darkergreen)
   );
-  border: 2px solid var(--color-brown);
+}
+.not-active {
+  background-image: radial-gradient(
+    circle at 60% 50%,
+    var(--color-darker-red),
+    var(--color-darkergreen)
+  );
 }
 
 .inside-circle-buttons {
