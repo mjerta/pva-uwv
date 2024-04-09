@@ -149,6 +149,7 @@ button {
 }
 .circle {
   border-radius: 50%;
+  position: relative;
 }
 
 .select-button {
@@ -252,4 +253,9 @@ figure {
     font-size: 0.8rem;
     font-weight: bold;
   }
+}
+
+.line {
+  position: absolute;
+  background-color: red;
 }
