@@ -156,14 +156,17 @@ button {
   height: calc((50rem / 16));
   width: calc((50rem / 16));
   border: 2px solid var(--color-brown);
+  z-index: 1;
 }
 
 .active {
+  transition: opacity 4s ease;
   background-image: radial-gradient(
     circle at 60% 50%,
     var(--color-lightgreen),
     var(--color-darkergreen)
   );
+  opacity: 1;
 }
 .not-active {
   background-image: radial-gradient(
@@ -257,5 +260,12 @@ figure {
 
 .line {
   position: absolute;
-  background-color: red;
+  background-color: var(--color-lightgreen);
+  transform-origin: left;
+  transform: scale(0);
+}
+
+.appear {
+  transition: 200ms ease-in-out;
+  transform: scale(1);
 }
