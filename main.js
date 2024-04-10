@@ -1,17 +1,19 @@
 let viewPortWidth;
-const allButtons = chooseButton();
+let transformProperty;
+let allButtons;
 let button1;
 let button2;
 let button3;
 let buttonPlanB;
+let planBPressed;
 
 let distance;
 let diagonalDistance;
 let angle;
 
 function initialize() {
-  console.log(allButtons[0].offsetLeft + 50);
-
+  allButtons = chooseButton();
+  console.log(allButtons[0]);
   viewPortWidth = window.innerWidth;
   button1 = getPosition(allButtons[0]);
   button2 = getPosition(allButtons[1]);
@@ -43,11 +45,26 @@ window.addEventListener("resize", () => {
   });
 
   // Redraw lines
-  createLine(button1.right, button1.top + button1.width / 2, distance, 4);
-  createLine(button2.right, button2.top + button2.width / 2, distance, 4);
-  createLine(button3.right, button3.top + button3.width / 2, distance, 4);
   createLine(
-    buttonPlanB.right,
+    allButtons[0].offsetLeft + button1.width,
+    button1.top + button1.width / 2,
+    distance,
+    4
+  );
+  createLine(
+    allButtons[1].offsetLeft + button1.width,
+    button2.top + button2.width / 2,
+    distance,
+    4
+  );
+  createLine(
+    allButtons[2].offsetLeft + button1.width,
+    button3.top + button3.width / 2,
+    distance,
+    4
+  );
+  createLine(
+    allButtons[4].offsetLeft + button1.width,
     buttonPlanB.top + buttonPlanB.width / 2,
     diagonalDistance,
     4,
@@ -90,25 +107,28 @@ function getAngleBetweenElements(element1, element2) {
 }
 
 function createLine(x, y, width, height, angle) {
-  console.log(viewPortWidth);
+  console.log("viewport", viewPortWidth);
   const line = document.createElement("div");
   line.classList.add("line");
-  if (viewPortWidth >= 1440) {
-    const calculate = (viewPortWidth - 1440) / 2;
-    console.log("x ", x);
-    console.log(calculate);
-    line.style.left = Math.round(x) - calculate + 7 + "px";
-  } else {
-    line.style.left = x + "px";
-  }
+  // if (viewPortWidth >= 1440) {
+  //   console.log("offset", allButtons[0].offsetLeft + 50);
+  //   const calculate = (viewPortWidth - 1440) / 2;
+  //   console.log("x ", x);
+  //   console.log(calculate);
+  //   line.style.left = Math.round(x) - calculate + "px";
+  // } else {
+  //   line.style.left = x + "px";
+  // }
+  console.log("x", x);
+  line.style.left = Math.floor(x) + "px";
+
   line.style.top = y + "px";
-  line.style.width = width + "px";
+  line.style.width = width + 2 + "px";
   line.style.height = height + "px";
 
   if (angle) {
-    line.style.transform = `rotate(${
-      angle + 3
-    }deg) translate(0px, -3px) scale(0)`;
+    transformProperty = `rotate(${angle + 3}deg) translate(0px, -3px) scale(0)`;
+    line.style.transform = transformProperty;
   }
   document.body.appendChild(line);
 }
@@ -116,13 +136,62 @@ function createLine(x, y, width, height, angle) {
 function activeStep() {
   allButtons.forEach((element) => {
     element.addEventListener("click", () => {
-      if (element.getAttribute("data-summary") === "step-2") {
-        document.querySelectorAll(".line")[0].classList.add("appear");
-      } else if (element.getAttribute("data-summary") === "step-3") {
-        document.querySelectorAll(".line")[1].classList.add("appear");
-      } else if (element.getAttribute("data-summary") === "step-4") {
-        document.querySelectorAll(".line")[2].classList.add("appear");
+      const getLines = document.querySelectorAll(".line");
+      switch (element.getAttribute("data-summary")) {
+        case "step-1":
+          allButtons.forEach((element) => {
+            element.classList.remove("active");
+            element.classList.add("not-active");
+          });
+          getLines.forEach((element) => {
+            element.classList.remove("appear");
+          });
+          getLines[3].style.transform = transformProperty;
+
+          planBPressed = false;
+          break;
+        case "step-2":
+          console.log(planBPressed);
+          if (planBPressed) {
+            console.log("plan b is pressed");
+            const transformString = transformProperty.replace(
+              "scale(0)",
+              "scale(1)"
+            );
+            getLines[3].style.transform = transformString;
+          } else {
+            getLines[0].classList.add("appear");
+          }
+
+          break;
+        case "step-3":
+          getLines[1].classList.add("appear");
+          break;
+        case "step-4":
+          getLines[2].classList.add("appear");
+          break;
+        case "plan-b":
+          // allButtons[0].classList.remove("active");
+          // allButtons[0].classList.add("not-active");
+
+          // reset all other buttons
+          allButtons.forEach((element) => {
+            element.classList.remove("active");
+            element.classList.add("not-active");
+          });
+          getLines.forEach((element) => {
+            element.classList.remove("appear");
+          });
+          getLines[3].style.transform = transformProperty;
+
+          planBPressed = true;
+          break;
+        default:
+          // default case, if none of the above conditions match
+          break;
       }
+      console.log(element);
+
       element.classList.add("active");
       element.classList.remove("not-active");
     });
@@ -132,11 +201,26 @@ function activeStep() {
 initialize();
 activeStep();
 
-createLine(button1.right, button1.top + button1.width / 2, distance, 4);
-createLine(button2.right, button2.top + button2.width / 2, distance, 4);
-createLine(button3.right, button3.top + button3.width / 2, distance, 4);
 createLine(
-  buttonPlanB.right,
+  allButtons[0].offsetLeft + button1.width,
+  button1.top + button1.width / 2,
+  distance,
+  4
+);
+createLine(
+  allButtons[1].offsetLeft + button1.width,
+  button2.top + button2.width / 2,
+  distance,
+  4
+);
+createLine(
+  allButtons[2].offsetLeft + button1.width,
+  button3.top + button3.width / 2,
+  distance,
+  4
+);
+createLine(
+  allButtons[4].offsetLeft + button1.width,
   buttonPlanB.top + buttonPlanB.width / 2,
   diagonalDistance,
   4,

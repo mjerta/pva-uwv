@@ -150,6 +150,7 @@ button {
 .circle {
   border-radius: 50%;
   position: relative;
+  box-sizing: content-box;
 }
 
 .select-button {
@@ -260,12 +261,12 @@ figure {
 
 .line {
   position: absolute;
-  background-color: var(--color-lightgreen);
+  background-color: var(--color-darkgreen);
   transform-origin: left;
   transform: scale(0);
+  transition: 200ms ease-in-out;
 }
 
 .appear {
-  transition: 200ms ease-in-out;
   transform: scale(1);
 }
