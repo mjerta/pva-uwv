@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PVA\UWV</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
+    <div class="overlay">
+      <svg
+        width="1699"
+        height="1318"
+        viewBox="0 0 1699 1318"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M658.564 1317.13C1022.28 1317.13 1317.13 1022.28 1317.13 658.564C1317.13 294.849 1022.28 0 658.564 0C294.849 0 0 294.849 0 658.564C0 1022.28 294.849 1317.13 658.564 1317.13ZM1607.06 518.047C1657.39 518.047 1698.18 477.25 1698.18 426.924C1698.18 376.599 1657.39 335.802 1607.06 335.802C1556.74 335.802 1515.94 376.599 1515.94 426.924C1515.94 477.25 1556.74 518.047 1607.06 518.047Z"
+          fill="#F1ACAC"
+          fill-opacity="0.16"
+        />
+      </svg>
+    </div>
+    <header>
+      <div class="logo">
+        <span id="logo-left">pva</span> <span id="logo-right">UWV</span>
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <section class="circle-buttons">
+          <div class="above inside-circle-buttons">
+            <button
+              data-summary="step-1"
+              class="circle select-button active"
+            ></button>
+            <button
+              data-summary="step-2"
+              class="circle select-button not-active"
+            ></button>
+            <button
+              data-summary="step-3"
+              class="circle select-button not-active"
+            ></button>
+            <button
+              data-summary="step-4"
+              class="circle select-button not-active"
+            ></button>
+          </div>
+          <div class="below inside-circle-buttons">
+            <button
+              data-summary="plan-b"
+              class="circle select-button not-active"
+            ></button>
+          </div>
+        </section>
+        <section class="content">
+          <summary>
+            <div class="content-title">
+              <span data-content="title">Lorem ipsum dolor...</span>
+              <button data-content="button" class="circle next-part"></button>
+            </div>
+            <p data-content="text">
+              Mi semper adipiscing in consectetur justo amet malesuada. Mauris
+              quisque id pellentesque donec ut eleifend. Enim tempus dui sit at
+              eget elementum morbi condimentum maecenas.
+            </p>
+          </summary>
+          <figure data-content="image" class="context-img">
+            <description data-content="description">
+              IMG. 1.2 description example lorem ipsum
+            </description>
+          </figure>
+        </section>
+      </div>
+    </main>
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
