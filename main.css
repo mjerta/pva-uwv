@@ -160,19 +160,18 @@ button {
   z-index: 1;
 }
 
-.active {
-  transition: opacity 4s ease;
-  background-image: radial-gradient(
-    circle at 60% 50%,
-    var(--color-lightgreen),
-    var(--color-darkergreen)
-  );
-  opacity: 1;
-}
 .not-active {
   background-image: radial-gradient(
     circle at 60% 50%,
     var(--color-darker-red),
+    var(--color-darkergreen)
+  );
+}
+.active {
+  transition: transform 4s ease;
+  background-image: radial-gradient(
+    circle at 60% 50%,
+    var(--color-lightgreen),
     var(--color-darkergreen)
   );
 }
@@ -199,7 +198,7 @@ button {
 summary {
   font-size: 1rem;
   width: calc(381rem / 16);
-  height: calc(227rem / 16);
+  min-height: calc(227rem / 16);
   background-color: var(--color-darkgreen);
   /* margin-left: calc(40rem / 16); */
   /* margin-top: calc(57rem / 16); */
@@ -221,6 +220,13 @@ summary {
   }
 }
 
+.content-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+}
+
 .next-part {
   background-color: red;
   width: calc(45rem / 16);
@@ -239,13 +245,15 @@ summary {
 }
 
 figure {
+  transition: opacity 2s ease;
+  opacity: 1;
   position: relative;
   width: calc(551.5rem / 16);
   height: calc(368rem / 16);
   border-radius: calc(4rem / 16);
 
-  background-color: red;
-  background: url("./assets/Rectangle\ 2.png");
+  /* background-color: red; */
+  /* background: url("./assets/Rectangle\ 2.png"); */
   background-size: cover;
   background-repeat: no-repeat;
 

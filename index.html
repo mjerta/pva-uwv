@@ -65,22 +65,24 @@
         </section>
         <section class="content">
           <summary>
-            <span>Lorem ipsum dolor...</span>
-            <button class="circle next-part">1/2</button>
-            <p>
+            <div class="content-title">
+              <span data-content="title">Lorem ipsum dolor...</span>
+              <button data-content="button" class="circle next-part"></button>
+            </div>
+            <p data-content="text">
               Mi semper adipiscing in consectetur justo amet malesuada. Mauris
               quisque id pellentesque donec ut eleifend. Enim tempus dui sit at
               eget elementum morbi condimentum maecenas.
             </p>
           </summary>
-          <figure class="context-img">
-            <description>
+          <figure data-content="image" class="context-img">
+            <description data-content="description">
               IMG. 1.2 description example lorem ipsum
             </description>
           </figure>
         </section>
       </div>
     </main>
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
