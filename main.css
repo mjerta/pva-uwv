@@ -90,11 +90,14 @@ body {
 .overlay {
   position: absolute;
   content: "";
-  width: clamp(37.5rem, 1400px, 1440px);
   top: 10rem;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
 
   svg {
-    width: 100%; /* Make the SVG fill its container */
+    overflow: hidden;
+    width: clamp(37.5rem, 100%, 1440px);
     height: auto; /* Ensure the aspect ratio is maintained */
     path {
       fill: var(--color-darkergreen);
