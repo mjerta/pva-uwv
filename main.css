@@ -82,19 +82,22 @@ body {
   font-family: "Montserrat", sans-serif;
   margin: 0 auto;
   max-width: 1440px;
-  overflow-x: hidden;
+  max-height: 1024px;
+  overflow: hidden;
+  border: 2px solid;
 }
 
 .overlay {
+  position: absolute;
+  content: "";
+  width: clamp(37.5rem, 1400px, 1440px);
+  top: 10rem;
+
   svg {
-    position: absolute;
-    content: "";
-    bottom: 0;
-    z-index: -1;
-    bottom: -30rem;
-    left: -11rem;
+    width: 100%; /* Make the SVG fill its container */
+    height: auto; /* Ensure the aspect ratio is maintained */
     path {
-      fill: var(--color-big-circles);
+      fill: var(--color-darkergreen);
     }
   }
 }
